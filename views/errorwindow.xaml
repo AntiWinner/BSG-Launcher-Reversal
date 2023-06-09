@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<local:BrowserWindowBase x:Class="Eft.Launcher.Gui.Wpf.Views.ErrorWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf" xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp.Core" xmlns:local="clr-namespace:Eft.Launcher.Gui.Wpf.Views" ResizeMode="NoResize" AllowsTransparency="False" BorderBrush="#040708" Background="#040708" WindowStyle="SingleBorderWindow" BorderThickness="0" WindowStartupLocation="CenterOwner" Title="Error" Height="261" Width="415" Icon="{StaticResource AppIcon}" DataContext="{Binding ErrorWindowViewModel, Source={StaticResource ViewModelLocator}}">
+  <WindowChrome.WindowChrome>
+    <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" GlassFrameThickness="0" CornerRadius="0" />
+  </WindowChrome.WindowChrome>
+  <Grid>
+    <wpf:ChromiumWebBrowser Name="Browser" />
+    <local:LoadingAnimation x:Name="LoadingAnimation" />
+  </Grid>
+</local:BrowserWindowBase>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl x:Class="Eft.Launcher.Gui.Wpf.Views.LabelView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Eft.Launcher.Gui.Wpf.Views" IsHitTestVisible="False" Visibility="{Binding Visibility, Mode=OneWay}" DataContext="{Binding LabelViewModel, Source={StaticResource ViewModelLocator}}">
+  <Grid>
+    <TextBlock FontWeight="Bold" FontSize="20" Text="{Binding Text, Mode=OneWay}" />
+  </Grid>
+</UserControl>

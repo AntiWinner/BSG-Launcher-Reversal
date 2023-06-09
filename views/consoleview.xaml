@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl x:Class="Eft.Launcher.Gui.Wpf.Views.ConsoleView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:converters="clr-namespace:Eft.Launcher.Gui.Wpf.Converters" IsHitTestVisible="True" xmlns:views="clr-namespace:Eft.Launcher.Gui.Wpf.Views" Visibility="{Binding Visibility}" DataContext="{Binding ConsoleViewModel, Source={StaticResource ViewModelLocator}}">
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <converters:HumanReadableSpeedConverter x:Key="HumanReadableSpeedConverter" />
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <StackPanel>
+    <FrameworkElement.Style>
+      <Style TargetType="{x:Type StackPanel}">
+        <Setter Property="Background">
+          <Setter.Value>
+            <SolidColorBrush Color="DarkCyan" Opacity="0.3" />
+          </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+          <Trigger Property="UIElement.IsMouseOver" Value="True">
+            <Trigger.Setters>
+              <Setter Property="Background">
+                <Setter.Value>
+                  <SolidColorBrush Color="DarkCyan" Opacity="0.7" />
+                </Setter.Value>
+              </Setter>
+            </Trigger.Setters>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+    </FrameworkElement.Style>
+    <Grid Visibility="{Binding BsgnVisibility, Mode=OneWay}">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="22" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <TextBlock Grid.Column="0" Text="BSGN" HorizontalAlignment="Center" FontSize="14">
+        <FrameworkElement.LayoutTransform>
+          <RotateTransform Angle="-90" />
+        </FrameworkElement.LayoutTransform>
+      </TextBlock>
+      <ItemsControl Grid.Column="1" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" ItemsSource="{Binding Path=DownloaderInfoCollection, Mode=OneWay}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Expander>
+              <HeaderedContentControl.Header>
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="88" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock Grid.Column="0" Margin="5,0" Text="{Binding Path=Downloader.Id, StringFormat=Dwn{0}}" />
+                  <Grid Column="1">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition />
+                      <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                      <RowDefinition />
+                      <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" Text="Regular" FontSize="10" HorizontalAlignment="Center" />
+                    <TextBlock Grid.Row="1" FontSize="11" HorizontalAlignment="Center" Text="{Binding RegularNodesActive}" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="11" Foreground="#FFFF0000" HorizontalAlignment="Center" Text="{Binding RegularNodesErrors}" />
+                  </Grid>
+                  <Grid Column="2">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition />
+                      <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                      <RowDefinition />
+                      <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" Text="Spare" FontSize="10" FontStyle="Italic" TextDecorations="Underline" HorizontalAlignment="Center" />
+                    <TextBlock Grid.Row="1" FontSize="11" FontStyle="Italic" TextDecorations="Underline" HorizontalAlignment="Center" Text="{Binding SpareNodesActive}" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="11" Foreground="#FFFF0000" FontStyle="Italic" TextDecorations="Underline" HorizontalAlignment="Center" Text="{Binding SpareNodesErrors}" />
+                  </Grid>
+                  <TextBlock Grid.Column="3" Padding="10,0,0,0" Text="{Binding Path=TotalCurrentSpeed, Converter={StaticResource HumanReadableSpeedConverter}}" />
+                </Grid>
+              </HeaderedContentControl.Header>
+              <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" CanContentScroll="True" MaxHeight="540">
+                <ItemsControl ItemsSource="{Binding Path=ChannelInfoCollection, Mode=OneWay}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <Grid>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*" />
+                          <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource Channel}" Text="{Binding Path=Name}" />
+                        <TextBlock Grid.Column="1" Style="{StaticResource Channel}" Padding="10,0,0,0" Text="{Binding Path=Speed, Converter={StaticResource HumanReadableSpeedConverter}}" />
+                      </Grid>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </ScrollViewer>
+            </Expander>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </Grid>
+    <CheckBox Content="Skip consistency checking" IsChecked="{Binding DoNotPerformIConsistencyChecking}" />
+    <TextBlock Text="Launcher logs" Margin="22,0,0,0" Style="{StaticResource TextBlockLink}" MouseDown="" />
+  </StackPanel>
+</UserControl>

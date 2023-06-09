@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Viewbox x:Class="Eft.Launcher.Gui.Wpf.Views.LoadingAnimation" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Eft.Launcher.Gui.Wpf.Views" Width="64" Height="64">
+  <Canvas Width="60" Height="60">
+    <Ellipse Width="10" Height="10" Fill="#9A8866" Canvas.Left="25" Canvas.Top="3">
+      <FrameworkElement.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Duration="0:0:1.5" RepeatBehavior="Forever">
+                  <LinearDoubleKeyFrame Value=".5" KeyTime="0:0:0.24" />
+                  <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.495" />
+                </DoubleAnimationUsingKeyFrames>
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+      </FrameworkElement.Triggers>
+    </Ellipse>
+    <Ellipse Width="10" Height="10" Fill="#9A8866" Canvas.Left="0" Canvas.Top="47">
+      <FrameworkElement.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Duration="0:0:1.5" RepeatBehavior="Forever">
+                  <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.495" />
+                  <LinearDoubleKeyFrame Value=".5" KeyTime="0:0:0.735" />
+                  <LinearDoubleKeyFrame Value="1" KeyTime="0:0:1.005" />
+                </DoubleAnimationUsingKeyFrames>
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+      </FrameworkElement.Triggers>
+    </Ellipse>
+    <Ellipse Width="10" Height="10" Fill="#9A8866" Canvas.Left="50" Canvas.Top="47">
+      <FrameworkElement.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Duration="0:0:1.5" RepeatBehavior="Forever">
+                  <LinearDoubleKeyFrame Value="1" KeyTime="0:0:1.005" />
+                  <LinearDoubleKeyFrame Value=".5" KeyTime="0:0:1.245" />
+                  <LinearDoubleKeyFrame Value="1" KeyTime="0:0:1.5" />
+                </DoubleAnimationUsingKeyFrames>
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+      </FrameworkElement.Triggers>
+    </Ellipse>
+    <Image Source="..\Content\earth.png" Width="30" Height="30" Canvas.Top="20" Canvas.Left="15">
+      <FrameworkElement.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+          <EventTrigger.Actions>
+            <BeginStoryboard>
+              <Storyboard>
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" To=".5" Duration="0:0:0.75" RepeatBehavior="Forever" AutoReverse="True" />
+              </Storyboard>
+            </BeginStoryboard>
+          </EventTrigger.Actions>
+        </EventTrigger>
+      </FrameworkElement.Triggers>
+    </Image>
+    <UIElement.RenderTransform>
+      <RotateTransform CenterX="30" CenterY="30" Angle="0" />
+    </UIElement.RenderTransform>
+  </Canvas>
+</Viewbox>
